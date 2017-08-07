@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include headerStuff %>
+  </head>
+  <body>
+    <% include pageHeader %>
+    <ul>
+    <% for (note of notelist) { %>
+      <li><%= note.key %> : <a href="/notes/view?key=<%= note.key %>"><%= note.title %></a></li>
+    <% } %>
+    </ul>
+    <% include footer %>
+  </body>
+</html>
