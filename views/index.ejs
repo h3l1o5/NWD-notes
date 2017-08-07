@@ -4,12 +4,18 @@
     <% include headerStuff %>
   </head>
   <body>
-    <% include pageHeader %>
-    <ul>
-    <% for (note of notelist) { %>
-      <li><%= note.key %> : <a href="/notes/view?key=<%= note.key %>"><%= note.title %></a></li>
-    <% } %>
-    </ul>
+    <div class="container-fluid">
+      <% include pageHeader %>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="btn-group-vertical" role="group" style="width: 100%;">
+            <% for (note of notelist) { %>
+              <a class="btn btn-lg btn-block btn-default" href="/notes/view?key=<%= note.key %>"><%= note.title %></a>
+            <% } %>
+          </div>
+        </div>
+      </div>
     <% include footer %>
+    </div>
   </body>
 </html>

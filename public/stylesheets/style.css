@@ -1,4 +1,4 @@
-body {
+ body {
   padding: 5px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
@@ -10,4 +10,14 @@ a {
 header {
   background: #eeeeee;
   padding: 5px;
+} 
+
+header.page-header h1 {
+  margin-top: 5px;
+}
+header.page-header .breadcrumb {
+  margin-bottom: 5px;
+}
+header.page-header a.btn-primary {
+  float: right;
 }
