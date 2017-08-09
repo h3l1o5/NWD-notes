@@ -1,7 +1,10 @@
 const util = require('util')
 const express = require('express')
 const router = express.Router()
-const notes = require('../models/notes-memory')
+const path = require('path')
+const notes = require(process.env.NOTES_MODEL ? path.join('..', process.env.NOTES_MODEL) : '../models/notes-memory')
+const log = require('debug')('notes:router-notes')
+const error = require('debug')('notes:error')
 
 router.get('/view', (req, res, next) => {
   const keyOfNote = req.query.key
@@ -42,11 +45,9 @@ router.post('/save', (req, res, next) => {
   } else {
     p = notes.update(req.body.notekey, req.body.title, req.body.body)
   }
-
   p.then( (note) => {
     res.redirect('/notes/view?key=' + note.key)
-  })
-  .catch( (err) => { next(err) })
+  }, (err) => {next (err) })
 })
 
 router.get('/edit', (req, res, next) => {
@@ -92,3 +93,4 @@ router.post('/destroy/confirm', (req, res, next) => {
 })
 
 module.exports = router
+
